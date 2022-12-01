@@ -7,7 +7,6 @@ let inputArray = fs.readFileSync('./input', 'utf-8').split('\n').map(str => {
 let finalCounts = [];
 
 let tempBuffer = 0
-// console.log(inputArray)
 
 for(x = 0; x < inputArray.length;x++){
     if (inputArray[x] != 0){
