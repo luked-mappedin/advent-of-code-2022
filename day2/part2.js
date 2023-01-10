@@ -15,49 +15,92 @@ inputArray.forEach((v) => {
 const rockScore = 1;
 const paperScore = 2;
 const scissorsScore = 3;
-// const rock = 'X';
-// const paper = 'Y';
-// const scissors = 'Z';
+
+/* 
+X = lose
+Y = draw
+Z = win 
+
+A = Rock
+B = Paper
+C = Scissors
+*/
+
 const win = 6;
 const draw = 3;
 let totalScore = 0
 
-for(x = 0; x < comboMap.length; x++){
-    if(comboMap[x].left === 'A'){
+let myPlay = "";
 
-        if(comboMap[x].right === 'X'){
-            //Tie
-            totalScore += rockScore + draw;
-        } else if(comboMap[x].right === 'Y'){
-            // Win
-            totalScore += win + paperScore;
-        } else {
+// for(x = 0; x < comboMap.length; x++){
+
+//     if(comboMap[x].left === 'A'){
+
+//         if(comboMap[x].right === 'X'){
+//             //Tie
+//             totalScore += rockScore + draw;
+//         } else if(comboMap[x].right === 'Y'){
+//             // Win
+//             totalScore += win + paperScore;
+//         } else {
+//             //Lose
+//             totalScore += scissorsScore;
+//         }
+
+//     } else if(comboMap[x].left === 'B'){
+//         if(comboMap[x].right === 'X'){
+//             //Lose
+//             totalScore += rockScore;
+//         } else if(comboMap[x].right === 'Y'){
+//             //Tie
+//             totalScore += draw + paperScore;
+//         } else {
+//             //Win
+//             totalScore += win + scissorsScore;
+//         }
+//     } else {
+
+//         if(comboMap[x].right === 'X'){
+//             //Win
+//             totalScore += win + rockScore;
+//         } else if(comboMap[x].right === 'Y'){
+//             //Lose
+//             totalScore += paperScore;
+//         } else {
+//             totalScore += scissorsScore + draw;
+//             //Tie
+//         }
+//     }
+// }
+
+for(x = 0; x < comboMap.length; x++){
+    if(comboMap[x].right === 'X'){
+        if(comboMap[x].left === 'A'){
             //Lose
+            //myPlay = 'Scissors';
+            totalScore += scissorsScore;
+        } else if (comboMap[x].left === 'B'){
+            totalScore += rockScore;
+        } else  { //C
+            totalScore += paperScore;
+        }
+    } else if (comboMap[x].right === 'Y'){
+        totalScore += draw;
+        if(comboMap[x].left === 'A'){
+            totalScore += rockScore;
+        } else if (comboMap[x].left === 'B'){
+            totalScore += paperScore;
+        } else  { //C
             totalScore += scissorsScore;
         }
-
-    } else if(comboMap[x].left === 'B'){
-        if(comboMap[x].right === 'X'){
-            //Lose
-            totalScore += rockScore;
-        } else if(comboMap[x].right === 'Y'){
-            //Tie
-            totalScore += draw + paperScore;
-        } else {
-            //Win
-            totalScore += win + scissorsScore;
-        }
     } else {
-
-        if(comboMap[x].right === 'X'){
-            //Win
-            totalScore += win + rockScore;
-        } else if(comboMap[x].right === 'Y'){
-            //Lose
+        totalScore += win;
+        if(comboMap[x].left === 'A'){
             totalScore += paperScore;
-        } else {
-            totalScore += scissorsScore + draw;
-            //Tie
+        } else if (comboMap[x].left === 'B'){
+            totalScore += scissorsScore;
+        } else  { //C
+            totalScore += rockScore;
         }
     }
 }
